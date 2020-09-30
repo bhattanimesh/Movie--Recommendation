@@ -2,7 +2,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 df = pd.read_csv("movie_rating dataset.txt",sep='\t',names =['user_id','item_id','ratings','timestamp'])
-#print(df.head())
+print(df.head())
 movie_title_df = pd.read_csv("movies.txt",names=['item_id','title'])
 #print(movie_title_df.head())
 dataset = pd.merge(df,movie_title_df,on= 'item_id')
@@ -16,18 +16,18 @@ movie_rating['num_of_ratings'] = pd.DataFrame(dataset.groupby('title')['ratings'
 #print(movie_rating.head())
 plt.figure(figsize=(10,4))
 movie_rating['ratings'].hist(bins=70)
-#plt.show()
+plt.show()
 table = dataset.pivot_table(index='user_id',columns='title',values= 'ratings')
 #print(table.isnull())
 #print(table.head(10))
 #print(movie_rating.sort_values('num_of_ratings',ascending=False))
 # CORRELATION
 star_wars = table['Star Wars (1977)']
-#print(star_wars.head())
+print(star_wars.head())
 similar_to_star_wars = table.corrwith(star_wars)
 star_wars_corr = pd.DataFrame(similar_to_star_wars,columns=['Correlation'])
-#print(star_wars_corr.dropna())
-#print(star_wars_corr.sort_values('Correlation',ascending=False))
+print(star_wars_corr.dropna())
+print(star_wars_corr.sort_values('Correlation',ascending=False))
 star_wars_corr = star_wars_corr.join(movie_rating['num_of_ratings'])
-#print(star_wars_corr)
+print(star_wars_corr)
 print(star_wars_corr[star_wars_corr['num_of_ratings']>100].sort_values('Correlation',ascending=False).head())
