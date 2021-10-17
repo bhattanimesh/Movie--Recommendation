@@ -1,10 +1,10 @@
 # for stopping program execution for some time
 import time
 
-print("Please insert Your CARD")
+print("Please insert Your ATM CARD")
 
 # for card processing
-time.sleep(5)
+time.sleep(10)
 
 password = 1234
 
@@ -33,7 +33,7 @@ if pin == password:
             # taking an option from user
             option = int(input("Please enter your choise "))
         except:
-            print("Please enter valid option")
+            print("Please enter valid choice")
 
         # for option 1
         if option == 1:
