@@ -6,7 +6,7 @@ print("Please insert Your ATM CARD")
 # for card processing
 time.sleep(10)
 
-password = 1234
+password = 12345
 
 # taking atm pin from user
 pin = int(input("enter your atm pin "))
